@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: ./.github/actions/test.yaml
+        uses: actions/checkout@v2
         
       - name: yarn install
         run: | 
