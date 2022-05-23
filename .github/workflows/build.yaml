@@ -26,7 +26,7 @@ jobs:
           
       - name: Push docker image
         run: |
-         docker tag temp/build hello-world:latest
-         docker tag temp/build hello-world:${{ github.sha }}
-         docker push hello-world:latest
-         docker push hello-world:${{ github.sha }}
+         docker tag temp/build farisadlin/hello-world:latest
+         docker tag temp/build farisadlin/hello-world:${{ github.sha }}
+         docker push farisadlin/hello-world:latest
+         docker push farisadlin/hello-world:${{ github.sha }}
