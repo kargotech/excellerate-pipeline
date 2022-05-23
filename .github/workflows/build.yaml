@@ -11,3 +11,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        run : docker build -t temp/build
+      -  name: deploy to repo
+        uses: actions/checkout@v2
+        run : 
+          docker tag temp/build zkanto/excellerate:latest
+          docker tag temp/build zkanto/excellerate:${{github.sha}}
+          docker push zkanto/excellerate:latest
+          docker push zkanto/excellerate:{{github.sha}}
