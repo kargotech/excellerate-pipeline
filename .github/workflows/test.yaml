@@ -1,12 +1,32 @@
 ---
 name: Build Docker Image
 
-on: push
+on: 
+  push:
+    branches:
+    - master
 
 jobs:
   deploy:
     name: Build Application
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: echo Continue here...
+        with:
+          node-version: 18.2.0
+        
+      - name: yarn install
+        run: | 
+          yarn install
+
+      - name: docker build
+        run: |
+          docker build -t temp/build .
+          
+      - name: Push docker image
+        run: |
+         docker tag temp/build mydockerhub/excellerate:latest
+         docker tag temp/build mydockerhub/excellerate:${{ github.sha }}
+         docker push mydockerhub/excellerate:latest
+         docker push mydockerhub/excellerate:${{ github.sha }}
