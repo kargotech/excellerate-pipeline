@@ -9,8 +9,11 @@ on:
 jobs:
   test:
     name: Build Application
-    runs_on: ubuntu-latest 
+    runs-on: ubuntu-latest 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run : echo hi
+      - name : build Image
+      - run : |
+          cd node
+          docker build -t cahya-kargo/assigment .
