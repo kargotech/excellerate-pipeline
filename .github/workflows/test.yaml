@@ -3,9 +3,9 @@ name: Build Docker Image
 
 on: push
 
-runs-on: ubuntu-latest
-
 jobs:
+  build:
+    runs-on: ubuntu-latest
   deploy:
     name: Build Application
     steps:
