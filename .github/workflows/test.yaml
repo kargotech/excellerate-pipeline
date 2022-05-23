@@ -13,4 +13,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Install Node Js
         run: sudo apt update && sudo apt install nodejs
+      - name : Run Test
+        run : |
+          cd node
+          npm install
+          npm test
       
