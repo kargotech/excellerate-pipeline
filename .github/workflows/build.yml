@@ -25,7 +25,7 @@ jobs:
         docker build -t temp/build ./node
     - name: Push docker image
       run: |
-        docker tag temp/build mydockerhub/excellerate:latest
-        docker tag temp/build mydockerhub/excellerate:${{ github.sha }}
-        docker push mydockerhub/excellerate:latest
-        docker push mydockerhub/excellerate:${{ github.sha }}
+        docker tag temp/build henbx/excell-pipe:latest
+        docker tag temp/build henbx/excell-pipe:${{ github.sha }}
+        docker push henbx/excell-pipe:latest
+        docker push henbx/excell-pipe:${{ github.sha }}
