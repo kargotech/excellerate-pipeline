@@ -1,11 +1,34 @@
 ---
 name: Run Unit Tests
 
-on: push
+on: 
+  push:
+    branches:
+    - master
 
 jobs:
   test:
     name: Test Application
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          node-version: 18.2.0
+        
+      - name: yarn test
+        run: |
+         yarn test
+        env:
+         CI: true
+
+      - name: docker build
+        run: |
+          docker build -t temp/build .
+          
+      - name: Push docker image
+        run: |
+         docker tag temp/build mydockerhub/excellerate:latest
+         docker tag temp/build mydockerhub/excellerate:${{ github.sha }}
+         docker push mydockerhub/excellerate:latest
+         docker push mydockerhub/excellerate:${{ github.sha }}
