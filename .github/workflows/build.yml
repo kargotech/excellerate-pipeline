@@ -22,4 +22,10 @@ jobs:
         yarn install
     - name: docker build
       run: |
-        docker build -t temp/build
+        docker build -t temp/build .
+    - name: Push docker image
+      run: |
+        docker tag temp/build mydockerhub/excellerate:latest
+        docker tag temp/build mydockerhub/excellerate:${{ github.sha }}
+        docker push mydockerhub/excellerate:latest
+        docker push mydockerhub/excellerate:${{ github.sha }}
