@@ -26,7 +26,7 @@ jobs:
           
       - name: Push docker image
         run: |
-         docker tag temp/build mydockerhub/excellerate:latest
-         docker tag temp/build mydockerhub/excellerate:${{ github.sha }}
-         docker push mydockerhub/excellerate:latest
-         docker push mydockerhub/excellerate:${{ github.sha }}
+         docker tag temp/build hello-world:latest
+         docker tag temp/build hello-world:${{ github.sha }}
+         docker push hello-world:latest
+         docker push hello-world:${{ github.sha }}
