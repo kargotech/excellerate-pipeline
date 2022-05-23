@@ -1,9 +1,10 @@
 ---
 name: Build Docker Image
 
-on: 
+on:
   pull_request:
-    branches:
+    branches:    
+      - main
       - master
 
 jobs:
@@ -16,7 +17,7 @@ jobs:
       - name: build
         run: |
           cd node 
-          docker build -t temp/build .
+          echo node
       # - name: Push docker image
       #   run: |
       #     docker tag temp/build cahyakargo/kargo:latest
