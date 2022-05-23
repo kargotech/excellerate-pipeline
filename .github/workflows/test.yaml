@@ -1,14 +1,18 @@
 ---
 name: Build Docker Image
 
-on: push
+on:
+  push:
+    branches: 
+    - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-  deploy:
-    name: Build Application
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - run: echo Continue here...
+  steps:
+    - uses: actions/checkout@v3
+    - name: yarn test
+      run: |
+        yarn test
+      env:
+        CI: true
