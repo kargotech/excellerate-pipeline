@@ -1,7 +1,8 @@
 ---
 name: Build Docker Image
 
-on: push
+on:
+ pull_request: master
 
 jobs:
   deploy:
@@ -9,4 +10,4 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: echo Continue here...
+      - run:  go test
