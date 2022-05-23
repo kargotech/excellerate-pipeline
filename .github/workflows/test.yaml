@@ -15,10 +15,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build docker image
-        run: docker build -t asia.gcr.io/ .
+        run: |
+            cd node
+            docker build -t temp/build .
   publish:
     runs-on: ubuntu-20.04
     
     steps:
       - name: Publish docker image
-        run: docker push asia.gcr.io/
+        run: |
+            cd node
+            docker build -t temp/build .
