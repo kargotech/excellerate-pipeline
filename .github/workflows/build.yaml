@@ -2,7 +2,7 @@
 name: Build Docker Image
 
 on:
-  pull_request:
+  push:
     branches:    
       - main
       - master
@@ -20,6 +20,7 @@ jobs:
           docker build -t temp/build .
       - name: Push docker image
         run: |
+          echo ${{ secrets.CI_REGISTRY_PASSWORD }} | docker login --username ${{ secrets.CI_REGISTRY_USER }} --password-stdin
           docker tag temp/build cahyakargo/kargo:latest
           docker tag temp/build cahyakargo/kargo:${{ github.sha }}
           docker push cahyakargo/kargo:latest
