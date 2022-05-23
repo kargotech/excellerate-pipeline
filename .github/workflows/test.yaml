@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Publish docker image
         run: |
-          docker tag temp/build:latest rezafirhankargo/hello-world:latest
-          docker tag temp/build:latest rezafirhankargo/hello-world:${{ github.sha }}
+          docker tag temp/build rezafirhankargo/hello-world:latest
+          docker tag temp/build rezafirhankargo/hello-world:${{ github.sha }}
           docker push rezafirhankargo/hello-world:latest
           docker push rezafirhankargo/hello-world:${{ github.sha }}
