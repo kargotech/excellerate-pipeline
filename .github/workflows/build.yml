@@ -25,7 +25,7 @@ jobs:
         docker build -t temp/build ./node
     - name: docker login
       run: |
-        docker login -u "henbx" -p "password" docker.io
+        docker login -u "henbx" --password-stdin docker.io
         docker push henbx/excell-pipe:0.0.1
     - name: Push docker image
       run: |
