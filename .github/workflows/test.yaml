@@ -3,8 +3,12 @@ name: Run Unit Tests
 
 on:
  push:
+<<<<<<< HEAD
    branches:
      - master
+=======
+   branches: master
+>>>>>>> master
 
 jobs:
   build:
