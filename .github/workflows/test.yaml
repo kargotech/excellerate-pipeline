@@ -10,9 +10,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - with: 
-          target_path: ./node
       - name: testing
         run: | 
+          cd node
           npm install
           npm test
