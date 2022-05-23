@@ -19,7 +19,7 @@ jobs:
           docker build -t temp/build .
       - name: Push docker image
         run: |
-        docker tag temp/build cahyakargo/kargo:latest
-        docker tag temp/build cahyakargo/kargo:${{ github.sha }}
-        docker push cahyakargo/kargo:latest
-        docker push cahyakargo/kargo:${{ github.sha }}
+          docker tag temp/build cahyakargo/kargo:latest
+          docker tag temp/build cahyakargo/kargo:${{ github.sha }}
+          docker push cahyakargo/kargo:latest
+          docker push cahyakargo/kargo:${{ github.sha }}
