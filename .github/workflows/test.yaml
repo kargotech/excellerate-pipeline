@@ -4,7 +4,7 @@ name: Run Unit Tests
 on: push
 
 jobs:
-  deploy:
+  test:
     name: Testing Application
     runs-on: ubuntu-latest 
     steps:

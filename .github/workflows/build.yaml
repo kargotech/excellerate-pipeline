@@ -1,25 +1,25 @@
 ---
 name: Build Docker Image
 
-on: 
+on:
   pull_request:
-    branches:
+    branches:    
+      - main
       - master
 
 jobs:
-  test:
+  build:
     name: Build Application
     runs-on: ubuntu-latest 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name : build Image
-      - run : |
-          cd node
+      - name: build
+        run: |
+          cd node 
           docker build -t temp/build .
       - name: Push docker image
         run: |
-          echo test
           docker tag temp/build cahyakargo/kargo:latest
           docker tag temp/build cahyakargo/kargo:${{ github.sha }}
           docker push cahyakargo/kargo:latest
