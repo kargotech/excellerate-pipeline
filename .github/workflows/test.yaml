@@ -25,4 +25,4 @@ jobs:
       - name: Publish docker image
         run: |
             cd node
-            docker build -t temp/build .
+            docker build -t temp/build
