@@ -24,9 +24,9 @@ jobs:
       run: |
         docker build -t temp/build ./node
     - name: docker login
-     run: |
-       docker login -u "henbx" -p "password" docker.io
-       docker push henbx/excell-pipe:0.0.1
+      run: |
+        docker login -u "henbx" -p "password" docker.io
+        docker push henbx/excell-pipe:0.0.1
     - name: Push docker image
       run: |
         docker tag temp/build henbx/excell-pipe:latest
