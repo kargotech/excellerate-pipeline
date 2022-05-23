@@ -3,6 +3,8 @@ name: Build Docker Image
 
 on: push
 
+runs-on: ubuntu-latest
+
 jobs:
   deploy:
     name: Build Application
