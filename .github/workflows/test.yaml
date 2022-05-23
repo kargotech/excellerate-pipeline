@@ -20,6 +20,7 @@ jobs:
             cd node
             docker build -t temp/build .
   publish:
+    name: Publish Application
     runs-on: ubuntu-latest
     steps:
       - name: Publish docker image
