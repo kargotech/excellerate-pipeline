@@ -18,6 +18,7 @@ jobs:
         
     - name: yarn install
       run: |
+        cd node
         yarn install
     - name: docker build
       run: |

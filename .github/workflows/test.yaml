@@ -17,4 +17,5 @@ jobs:
       - name: Run Testing
         run: |
           cd node
+          yarn install
           yarn test
