@@ -1,11 +1,11 @@
 ---
-name: Build Docker Image
+name: Run Unit Tests
 
 on: push
 
 jobs:
   deploy:
-    name: Build Application
+    name: Testing Application
     runs_on: ubuntu-latest 
     steps:
       - name: Checkout code
