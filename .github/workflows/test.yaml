@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build docker image
-        run: docker build -t asia.gcr.io/kargotech-prod/excellarate .
+        run: docker build -t asia.gcr.io/asd .
   publish:
     runs-on: ubuntu-20.04
     
