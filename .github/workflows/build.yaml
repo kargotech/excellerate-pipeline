@@ -14,7 +14,7 @@ jobs:
         run: |
           cd node
           docker build -t temp/build .
-          echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
           docker tag temp/build zahrikargo/assignment:latest
           docker tag temp/build zahrikargo/assignment:${{ github.sha }} 
           docker push zahrikargo/assignment:latest
