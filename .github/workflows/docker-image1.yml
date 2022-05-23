@@ -1,0 +1,35 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: 
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with: 
+        node-version: 10.x
+        
+    - name: yarn install
+      run: |
+        yarn install
+    - name: yarn test
+      run: |
+        yarn test
+      env:
+        CI: true
+    - name: docker build
+      run: |
+        docker build -t temp/build
+    - name: Push docker image
+      run: |
+        docker tag temp/build mydockerhub/excellerate:latest
+        docker tag temp/build mydockerhub/excellerate:${{ github.sha }}
+        docker push mydockerhub/excellerate:latest
+        docker push mydockerhub/excellerate:${{ github.sha }}
