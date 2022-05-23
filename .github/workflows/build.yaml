@@ -1,5 +1,5 @@
 ---
-name: Run Unit Tests
+name: Build Docker Image
 
 on: 
   push:
@@ -7,25 +7,21 @@ on:
     - master
 
 jobs:
-  test:
-    name: Test Application
+  deploy:
+    name: Build Application
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
-      - name: yarn test
-        run: |
-         yarn test
-        env:
-         CI: true
 
-      - name: docker build
+      - name: Docker Build
         run: |
+          cd node
           docker build -t temp/build .
           
-      - name: Push docker image
+      - name: Push Docker Image
         run: |
+         echo ${{ secrets.PASSWORD }} | docker login --username ${{ secrets.USERNAME }} --password-stdin
          docker tag temp/build farisadlin/hello-world:latest
          docker tag temp/build farisadlin/hello-world:${{ github.sha }}
          docker push farisadlin/hello-world:latest

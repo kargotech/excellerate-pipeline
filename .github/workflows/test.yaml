@@ -1,5 +1,5 @@
 ---
-name: Build Docker Image
+name: Run Unit Tests
 
 on: 
   push:
@@ -7,24 +7,15 @@ on:
     - master
 
 jobs:
-  deploy:
-    name: Build Application
+  test:
+    name: Test Application
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
-      - name: yarn install
-        run: | 
-          yarn install
 
-      - name: docker build
+      - name: Docker Testing
         run: |
-          docker build -t temp/build .
-          
-      - name: Push docker image
-        run: |
-         docker tag temp/build farisadlin/hello-world:latest
-         docker tag temp/build farisadlin/hello-world:${{ github.sha }}
-         docker push farisadlin/hello-world:latest
-         docker push farisadlin/hello-world:${{ github.sha }}
+          cd node
+          npm install
+          npm test
