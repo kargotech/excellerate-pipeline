@@ -1,12 +1,17 @@
 ---
-name: Build Docker Image
+name: Run Unit Tests
 
-on: push
+on:
+ push:
+   branches:
+   	- master
 
 jobs:
-  deploy:
-    name: Build Application
+  build:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: echo Continue here...
+      - name: Install Node Js
+        run: sudo apt update && sudo apt install nodejs
+      
