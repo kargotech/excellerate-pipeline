@@ -5,9 +5,10 @@ on:
   push:
     branches:
       - 'master'
+      - 'release/**'
 
 jobs:
-  deploy:
+  build:
     name: Build Application
     runs-on: ubuntu-latest
     steps:
