@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  test:
+  deploy:
     name: Build Application
     runs-on: ubuntu-latest 
     steps:
@@ -17,9 +17,9 @@ jobs:
       - run : |
           cd node
           docker build -t temp/build .
-      - name: Push docker image
-        run: |
-          docker tag temp/build cahyakargo/kargo:latest
-          docker tag temp/build cahyakargo/kargo:${{ github.sha }}
-          docker push cahyakargo/kargo:latest
-          docker push cahyakargo/kargo:${{ github.sha }}
+      # - name: Push docker image
+      #   run: |
+      #     docker tag temp/build cahyakargo/kargo:latest
+      #     docker tag temp/build cahyakargo/kargo:${{ github.sha }}
+      #     docker push cahyakargo/kargo:latest
+      #     docker push cahyakargo/kargo:${{ github.sha }}
