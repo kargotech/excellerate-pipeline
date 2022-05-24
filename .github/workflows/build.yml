@@ -26,10 +26,9 @@ jobs:
     - name: docker login
       run: |
         docker login -u "iofldh" -p "1234567890" docker.io
-        docker push iofldh/excell-pipe:0.0.1
     - name: Push docker image
       run: |
-        docker tag temp/build henbx/excell-pipe:latest
-        docker tag temp/build henbx/excell-pipe:${{ github.sha }}
-        docker push henbx/excell-pipe:latest
-        docker push henbx/excell-pipe:${{ github.sha }}
+        docker tag temp/build iofldh/excell-pipe:latest
+        docker tag temp/build iofldh/excell-pipe:${{ github.sha }}
+        docker push iofldh/excell-pipe:latest
+        docker push iofldh/excell-pipe:${{ github.sha }}
