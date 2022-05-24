@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
+      with: 
+        node-version: 14.x
+        
+    - name: yarn install
+      run: |
+        cd node
+        yarn install
+    - name: docker build
+      run: |
+        docker build -t temp/build ./node
+    - name: docker login
+      run: |
+        docker login -u "iofldh" -p "1234567890" docker.io
+    - name: Push docker image
+      run: |
+        docker tag temp/build iofldh/excell-pipe:latest
+        docker tag temp/build iofldh/excell-pipe:${{ github.sha }}
+        docker push iofldh/excell-pipe:latest
+        docker push iofldh/excell-pipe:${{ github.sha }}
