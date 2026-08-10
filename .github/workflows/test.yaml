@@ -4,9 +4,17 @@ name: Build Docker Image
 on: push
 
 jobs:
-  deploy:
+  build:
+    runs-on: ubuntu-latest
     name: Build Application
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: echo Continue here...
+      - name: Build docker image
+        run: docker build -t asia.gcr.io/kargotech-prod/excellarate
+  publish:
+    runs-on: ubuntu-20.04
+    
+    steps:
+      - name: Publish docker image
+        run: docker push asia.gcr.io/kargotech-prod/excellarate
