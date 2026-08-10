@@ -1,12 +1,19 @@
 ---
 name: Build Docker Image
 
-on: push
+on:
+  pull_request
 
 jobs:
-  deploy:
-    name: Build Application
+  test:
+    runs-on: ubuntu-latest
+    
+    name: Test Application
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: echo Continue here...
+      - name: Run Testing
+        run: |
+          cd node
+          yarn install
+          yarn test
